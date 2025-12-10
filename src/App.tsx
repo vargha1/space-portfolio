@@ -1,9 +1,12 @@
-"use client";
-import { Analytics } from "@vercel/analytics/next";
+import { inject } from "@vercel/analytics";
 import { Stars } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo, useEffect } from "react";
 import * as THREE from "three";
+
+if (import.meta.env.PROD) {
+  inject();
+}
 
 function Blackhole() {
   const meshRef = useRef<THREE.Mesh | null>(null);
@@ -188,7 +191,6 @@ export default function App() {
 
   return (
     <div className="container flex flex-col justify-center">
-      <Analytics />
       <Canvas className="!fixed inset-0" camera={{ position: [0, 0, 15] }}>
         <ambientLight intensity={0.6} />
         <Stars
