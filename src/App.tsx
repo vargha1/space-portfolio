@@ -188,6 +188,7 @@ export default function App() {
 
   return (
     <div className="container flex flex-col justify-center">
+      <Analytics />
       <Canvas className="!fixed inset-0" camera={{ position: [0, 0, 15] }}>
         <ambientLight intensity={0.6} />
         <Stars
